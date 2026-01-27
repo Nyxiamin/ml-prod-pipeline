@@ -4,7 +4,7 @@ on:
  push:
     branches: ["main"]
     paths:
-        - "ml/_"
+        - "ml/*"
         - ".github/workflows/train_register_deploy_staging.yml"
 jobs:
  train_register:
@@ -25,7 +25,7 @@ jobs:
       env:
         MLFLOW_TRACKING_URI: ${{ secrets.DAGSHUB_MLFLOW_TRACKING_URI }}
         MLFLOW_TRACKING_TOKEN: ${{ secrets.DAGSHUB_TOKEN }}
-        MODEL_NAME: churn-model
+        MODEL_NAME: awesome-model
         DATA_VERSION: "dvc:v1" # in a real repo: derive from `dvc.lock` or commit hash
       run: |
         python ml/train_and_register.py | tee train_out.json
@@ -47,9 +47,9 @@ jobs:
           run: |
             echo "$DOCKERHUB_TOKEN" | docker login -u "$DOCKERHUB_USERNAME"
             --password-stdin
-            docker build -t "$DOCKERHUB_USERNAME/churn-backend:staging"
+            docker build -t "$DOCKERHUB_USERNAME/awesome-backend:staging"
             backend
-            docker push "$DOCKERHUB_USERNAME/churn-backend:staging"
+            docker push "$DOCKERHUB_USERNAME/awesome-backend:staging"
         - name: Deploy to staging (local-compose example)
           # For class: this is illustrative.
           # In real deployment: SSH into staging host and run compose
