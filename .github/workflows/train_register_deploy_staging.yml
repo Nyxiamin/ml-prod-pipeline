@@ -45,10 +45,8 @@ jobs:
             DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
             DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
           run: |
-            echo "$DOCKERHUB_TOKEN" | docker login -u "$DOCKERHUB_USERNAME"
-            --password-stdin
-            docker build -t "$DOCKERHUB_USERNAME/awesome-backend:staging"
-            backend
+            echo "$DOCKERHUB_TOKEN" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+            docker build -t "$DOCKERHUB_USERNAME/awesome-backend:staging" backend
             docker push "$DOCKERHUB_USERNAME/awesome-backend:staging"
         - name: Deploy to staging (local-compose example)
           # For class: this is illustrative.
