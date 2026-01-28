@@ -56,8 +56,7 @@ jobs:
             DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
           run: |
             echo "$DOCKERHUB_TOKEN" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t "$DOCKERHUB_USERNAME/awesome-backend:production"
-            backend
+            docker build -t "$DOCKERHUB_USERNAME/awesome-backend:production" backend
             docker push "$DOCKERHUB_USERNAME/awesome-backend:production"
         - name: Deploy to production (placeholder)
           run: |
