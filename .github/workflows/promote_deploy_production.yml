@@ -55,12 +55,10 @@ jobs:
             DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
             DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
           run: |
-            echo "$DOCKERHUB_TOKEN" | docker login -u "$DOCKERHUB_USERNAME"
-            --password-stdin
+            echo "$DOCKERHUB_TOKEN" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
             docker build -t "$DOCKERHUB_USERNAME/awesome-backend:production"
             backend
             docker push "$DOCKERHUB_USERNAME/awesome-backend:production"
         - name: Deploy to production (placeholder)
           run: |
-            echo "Deploy step placeholder: run docker-compose on production
-            host."
+            echo "Deploy step placeholder: run docker-compose on production host."
