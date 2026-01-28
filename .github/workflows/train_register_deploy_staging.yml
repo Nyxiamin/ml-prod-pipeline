@@ -53,8 +53,7 @@ jobs:
           # In real deployment: SSH into staging host and run compose
           # pulling the image.
           run: |
-            echo "Deploy step placeholder: run docker-compose on staging
-            host."
+            echo "Deploy step placeholder: run docker-compose on staging host."
  staging_smoke_test:
     needs: deploy_staging
     runs-on: ubuntu-latest

@@ -4,7 +4,7 @@ services:
   ports:
       - "8000:8000"
   environment:
-    MODEL_NAME: churn-model
+    MODEL_NAME: awesome-model
     MODEL_STAGE: Staging
     MLFLOW_TRACKING_URI: ${MLFLOW_TRACKING_URI}
     MLFLOW_TRACKING_TOKEN: ${MLFLOW_TRACKING_TOKEN}

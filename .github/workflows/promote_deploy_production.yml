@@ -23,7 +23,7 @@ jobs:
           env:
             MLFLOW_TRACKING_URI: ${{ secrets.DAGSHUB_MLFLOW_TRACKING_URI }}
             MLFLOW_TRACKING_TOKEN: ${{ secrets.DAGSHUB_TOKEN }}
-            MODEL_NAME: churn-model
+            MODEL_NAME: awesome-model
             MODEL_VERSION: ${{ inputs.model_version }}
           run: |
             python - << 'PY'
@@ -57,9 +57,9 @@ jobs:
           run: |
             echo "$DOCKERHUB_TOKEN" | docker login -u "$DOCKERHUB_USERNAME"
             --password-stdin
-            docker build -t "$DOCKERHUB_USERNAME/churn-backend:production"
+            docker build -t "$DOCKERHUB_USERNAME/awesome-backend:production"
             backend
-            docker push "$DOCKERHUB_USERNAME/churn-backend:production"
+            docker push "$DOCKERHUB_USERNAME/awesome-backend:production"
         - name: Deploy to production (placeholder)
           run: |
             echo "Deploy step placeholder: run docker-compose on production
